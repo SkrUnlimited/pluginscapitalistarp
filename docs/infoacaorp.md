@@ -39,7 +39,7 @@ Documentação técnica completa do sistema de Ações (Roleplay), incluindo flu
 
 # 1) Visão Geral do Sistema
 
-O sistema de Ações (ex: roubos) funciona em etapas bem definidas:
+O sistema de Ações (ex: Caixa Eletrônico[ATM]) funciona em etapas bem definidas:
 
 1. O jogador inicia a ação via comando.
 2. O sistema executa validações server-side.
