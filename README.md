@@ -1,4 +1,4 @@
-# pluginscapitalistarp
+# Plugins do Roleplay Capitalista
 
 Plugins do RP Capitalista e suas funcionalidades.
 
