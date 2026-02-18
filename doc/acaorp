@@ -1,64 +1,88 @@
-# AcaoRP - Resumo Rapido de Comandos e Permissoes
+# 🚔 AcaoRP — Resumo Rápido de Comandos e Permissões
 
-Documento curto para operacao do dia a dia: o que cada comando faz, qual permissao precisa e como funciona na pratica.
+Documento curto para operação do dia a dia:  
+o que cada comando faz, qual permissão precisa e como funciona na prática.
 
-## 1) Comandos principais
+---
 
-| Comando | Permissao | Como funciona |
-|---|---|---|
-| `/roubo iniciar [acaoId]` | `sistemaacoes.acao` | Inicia uma acao olhando para um alvo valido. Se informar `acaoId`, ele força aquela acao. |
+## 1️⃣ Comandos Principais
+
+| Comando | Permissão | Como funciona |
+|----------|------------|---------------|
+| `/roubo iniciar [acaoId]` | `sistemaacoes.acao` | Inicia uma ação olhando para um alvo válido. Se informar `acaoId`, força aquela ação. |
 | `/acao iniciar [acaoId]` | `sistemaacoes.acao` | Alias do comando acima. |
-| `/iracao [ID]` | `sistemaacoes.iracao` | Marca no mapa a ocorrencia ativa/recente. Uso focado em policial. |
-| `/historicoacao [1-10]` | `sistemaacoes.iracao` | Lista ocorrencias recentes e ajuda a achar ID para usar no `/iracao`. |
+| `/iracao [ID]` | `sistemaacoes.iracao` | Marca no mapa a ocorrência ativa/recente. Uso focado em policial. |
+| `/historicoacao [1-10]` | `sistemaacoes.iracao` | Lista ocorrências recentes e ajuda a encontrar o ID para usar no `/iracao`. |
 
-Aliases de historico:
+### Aliases de histórico
+
 - `acaohistorico`
 - `histiricoacao`
 
-## 2) Comandos administrativos (staff)
+---
 
-| Comando | Permissao | Como funciona |
-|---|---|---|
-| `/acao criar <nome>` | `sistemaacoes.acao` + `sistemaacoes.admin` | Cria acao nova usando o alvo que voce esta olhando. |
-| `/acao ativar <acao> [raio]` | `sistemaacoes.acao` + `sistemaacoes.admin` | Ativa/atualiza um local ativo da acao no alvo olhado. |
-| `/acao desativar <acao>` | `sistemaacoes.acao` + `sistemaacoes.admin` | Remove o local ativo da acao no alvo olhado. |
-| `/acao pontos <acao>` | `sistemaacoes.acao` + `sistemaacoes.admin` | Mostra os pontos (locais ativos) da acao. |
-| `/acaocriar <nome>` | `sistemaacoes.admin` | Comando legado para criar acao. |
-| `/acaoeditar <acao> ...` | `sistemaacoes.admin` | Edita GUID/tokens, nome, ativo e parametros da acao. |
-| `/acaoinfo <acao>` | `sistemaacoes.admin` | Exibe dados da acao (id, slug, permissoes, tokens etc). |
-| `/acaolistar` | `sistemaacoes.admin` | Lista todas as acoes cadastradas. |
-| `/acaoexcluir <acao>` | `sistemaacoes.admin` | Exclui uma acao da configuracao. |
+## 2️⃣ Comandos Administrativos (Staff)
 
-## 3) Permissoes por acao (alem do comando)
+| Comando | Permissão | Como funciona |
+|----------|------------|---------------|
+| `/acao criar <nome>` | `sistemaacoes.acao` + `sistemaacoes.admin` | Cria nova ação usando o alvo que você está olhando. |
+| `/acao ativar <acao> [raio]` | `sistemaacoes.acao` + `sistemaacoes.admin` | Ativa/atualiza um local ativo da ação no alvo olhado. |
+| `/acao desativar <acao>` | `sistemaacoes.acao` + `sistemaacoes.admin` | Remove o local ativo da ação no alvo olhado. |
+| `/acao pontos <acao>` | `sistemaacoes.acao` + `sistemaacoes.admin` | Mostra os pontos (locais ativos) da ação. |
+| `/acaocriar <nome>` | `sistemaacoes.admin` | Comando legado para criar ação. |
+| `/acaoeditar <acao> ...` | `sistemaacoes.admin` | Edita GUID/tokens, nome, status ativo e parâmetros da ação. |
+| `/acaoinfo <acao>` | `sistemaacoes.admin` | Exibe dados da ação (ID, slug, permissões, tokens etc.). |
+| `/acaolistar` | `sistemaacoes.admin` | Lista todas as ações cadastradas. |
+| `/acaoexcluir <acao>` | `sistemaacoes.admin` | Exclui uma ação da configuração. |
 
-Cada acao possui permissao propria:
+---
 
-- `PermissaoRoubo`:
-  - Necessaria para iniciar a acao.
-  - Exemplo padrao: `sistemaacoes.roubar.<slug_da_acao>`.
+## 3️⃣ Permissões por Ação (além do comando)
 
-- `PermissaoIr`:
-  - Necessaria para rastrear aquela acao via `/iracao`.
-  - Exemplo padrao: `sistemaacoes.ir.<slug_da_acao>`.
+Cada ação possui permissões próprias:
 
-Ou seja: ter permissao do comando nao substitui permissao especifica da acao.
+### 🔐 PermissaoRoubo
+- Necessária para iniciar a ação.
+- Exemplo padrão:
+  `sistemaacoes.roubar.<slug_da_acao>`
 
-## 4) Regras de funcionamento importantes
+### 📡 PermissaoIr
+- Necessária para rastrear aquela ação via `/iracao`.
+- Exemplo padrão:
+  `sistemaacoes.ir.<slug_da_acao>`
 
-- O jogador precisa estar olhando para alvo valido (token/GUID liberado para a acao).
-- O local precisa estar ativo em `LocaisAtivos` (raio, posicao e escopo batendo).
-- Se `CrewAtiva=true`, o plugin valida participacao de equipe conforme `CrewModoValidacao`.
-- Policial para contestacao/recompensa segue as regras de participacao/atividade da config.
-- Mensagens com emoji ficam nos webhooks; chat do servidor fica sem emoji.
+**Importante:**  
+Ter permissão do comando não substitui a permissão específica da ação.
 
-## 5) Permissoes globais mais usadas
+---
 
-- `sistemaacoes.acao`: acesso ao comando principal (`/roubo` e alias `/acao`).
-- `sistemaacoes.iracao`: acesso a `/iracao` e `/historicoacao`.
-- `sistemaacoes.admin`: acesso aos comandos administrativos de acao.
-- `sistemaacoes.policial`: permissao de cargo policial (padrao, pode ser alterada na config).
-- `sistemaacoes.crew`: permissao opcional usada na elegibilidade de equipe.
+## 4️⃣ Regras de Funcionamento Importantes
 
-## 6) Observacao tecnica
+- O jogador precisa estar olhando para um alvo válido (token/GUID liberado para a ação).
+- O local precisa estar ativo em `LocaisAtivos` (raio, posição e escopo compatíveis).
+- Se `CrewAtiva = true`, o plugin valida participação de equipe conforme `CrewModoValidacao`.
+- Policial para contestação/recompensa segue as regras de participação/atividade definidas na config.
+- Webhooks usam emojis; chat do servidor permanece sem emoji.
 
-Os campos de config `Global.PermissaoComandoAcao` e `Global.PermissaoComandoIracao` existem, mas os comandos registrados atualmente usam as permissoes fixas declaradas nas classes de comando.
+---
+
+## 5️⃣ Permissões Globais Mais Usadas
+
+| Permissão | Função |
+|------------|--------|
+| `sistemaacoes.acao` | Acesso ao comando principal (`/roubo` e alias `/acao`). |
+| `sistemaacoes.iracao` | Acesso a `/iracao` e `/historicoacao`. |
+| `sistemaacoes.admin` | Acesso aos comandos administrativos. |
+| `sistemaacoes.policial` | Permissão de cargo policial (padrão, pode ser alterada na config). |
+| `sistemaacoes.crew` | Permissão opcional usada na elegibilidade de equipe. |
+
+---
+
+## 6️⃣ Observação Técnica
+
+Os campos de config:
+
+- `Global.PermissaoComandoAcao`
+- `Global.PermissaoComandoIracao`
+
+Existem na configuração, porém os comandos atualmente registrados utilizam as permissões fixas declaradas diretamente nas classes de comando.
